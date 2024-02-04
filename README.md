@@ -22,12 +22,12 @@
    
 ## Autores:
 
--    [avillagabriella](https://github.com/avillagabriella)
--    [Ana-Almeida110](https://github.com/Ana-Almeida110)
--    [beadlim](https://github.com/beadlim)
--    [karenribeiro7](https://github.com/karenribeiro7)
--    [MelissaGasque](https://github.com/MelissaGasque)
--    [NaHaze](https://github.com/NaHaze)
--    [YaraDanieleUchoa](https://github.com/YaraDanieleUchoa)
+-    [Avilla Gabriella](https://github.com/avillagabriella)
+-    [Ana Almeida](https://github.com/Ana-Almeida110)
+-    [Beatriz Lima](https://github.com/beadlim)
+-    [Karen Ribeiro](https://github.com/karenribeiro7)
+-    [Melissa Gasque](https://github.com/MelissaGasque)
+-    [Natália Marin](https://github.com/NaHaze)
+-    [Yara Uchoa](https://github.com/YaraDanieleUchoa)
 
 
