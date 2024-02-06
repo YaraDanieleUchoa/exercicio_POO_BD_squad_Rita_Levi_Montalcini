@@ -1,4 +1,4 @@
-![unnamed](logo.jpg)
+![unnamed](img/logo.jpg)
 
 # Projeto 02 - POO e Banco de Dados com Python - Squad Rita Levi Montalcini
 
