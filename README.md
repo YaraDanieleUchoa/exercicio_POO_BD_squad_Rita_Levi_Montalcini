@@ -1,6 +1,6 @@
 ![unnamed](logo.jpg)
 
-# Projeto 02 de POO e Banco de Dados com Python - Squad Rita Levi Montalcini
+# Projeto 02 - POO e Banco de Dados com Python - Squad Rita Levi Montalcini
 
 ## Requisitos para executar
 
