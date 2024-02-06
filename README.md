@@ -17,8 +17,7 @@
 3. Fizemos encontros frequentes para estudar e desenvolver o desafio juntas.
 4. Fizemos a modelagem do tema escolhido: [Mercado](modelagem.md)
 5. Todas que estavam presentes nas reuniões colaboraram nas atividades.
-6. 
-7. 
+
    
 ## Autores:
 
@@ -29,5 +28,6 @@
 -    [Melissa Gasque](https://github.com/MelissaGasque)
 -    [Natália Marin](https://github.com/NaHaze)
 -    [Yara Uchoa](https://github.com/YaraDanieleUchoa)
-
+-    [Flora Fentanes](https://github.com/Florafb)
+-    [Daniela Morsch](https://github.com/DaniMorsch)
 
