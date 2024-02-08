@@ -30,4 +30,4 @@
 -    [Yara Uchoa](https://github.com/YaraDanieleUchoa)
 -    [Flora Fentanes](https://github.com/Florafb)
 -    [Daniela Morsch](https://github.com/DaniMorsch)
-
+-    [Camila Barros](https://github.com/cabarros3)
