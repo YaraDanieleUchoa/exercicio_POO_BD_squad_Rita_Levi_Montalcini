@@ -1,4 +1,4 @@
--- CRIAÇÃO DAS TABELAS:
+# 01 - CRIAÇÃO DAS TABELAS:
 
 -- Tabela Categoria:
 CREATE TABLE IF NOT EXISTS categoria (
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS produto_fornecedor (
     FOREIGN KEY (fornecedorID) REFERENCES fornecedor(id)
 );
 
--- INSERIR DADOS:
+# 02 - INSERIR DADOS:
 
 -- Inserindo dados na tabela Categoria:
 INSERT INTO categoria (nome) VALUES 
@@ -134,7 +134,7 @@ INSERT INTO detalhes_venda (vendaID, produtoID, quantidade, preco) VALUES
 (5, 5, 11, (11 * 1.00)),
 (6, 6, 6, (6 * 2.00));
 
--- CONSULTAS:
+# 03 - CONSULTAS:
 
 -- Listar todos os produtos em estoque
 SELECT * FROM produto;
@@ -163,7 +163,7 @@ INNER JOIN detalhes_venda ON produto.id = detalhes_venda.produtoID
 GROUP BY categoria.nome
 ORDER BY Valor_Total DESC;
 
--- ATUALIZAÇÕES E EXCLUSÕES:
+# 04 - ATUALIZAÇÕES E EXCLUSÕES:
 
 -- Atualizar a quantidade em estoque após uma venda
 UPDATE produto
