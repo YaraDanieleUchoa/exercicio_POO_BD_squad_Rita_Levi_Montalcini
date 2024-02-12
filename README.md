@@ -33,7 +33,7 @@
 4. ATUALIZAÇÕES E EXCLUSÕES:
 
     - Atualizar a quantidade em estoque após uma venda: 
-    Diminui a quantidade em estoque de um produto após uma venda.
+    Diminue a quantidade em estoque de um produto após uma venda.
     - Remover um cliente: 
     Remove um cliente específico do banco de dados.
 
