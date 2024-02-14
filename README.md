@@ -1,4 +1,4 @@
-![unnamed](img/logo.jpg)
+![unnamed](.img/logo.jpg)
 
 # Projeto 02 - POO e Banco de Dados com Python - Squad Rita Levi Montalcini
 
@@ -15,7 +15,7 @@
 1. Fizemos um primeiro encontro para escolhermos o tema, definir e dividir as Task's.
 2. Participação de quase todas as integrantes.
 3. Fizemos encontros frequentes para estudar e desenvolver o desafio juntas.
-4. Fizemos a modelagem do tema escolhido: [Mercado](modelagem.md)
+4. Fizemos a modelagem do tema escolhido
 5. Todas que estavam presentes nas reuniões colaboraram nas atividades.
 
    
