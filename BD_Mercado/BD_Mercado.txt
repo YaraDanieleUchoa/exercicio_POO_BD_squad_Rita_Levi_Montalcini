@@ -1,0 +1,175 @@
+# 01 - CRIAÇÃO DAS TABELAS:
+
+-- Tabela Categoria:
+CREATE TABLE IF NOT EXISTS categoria (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome VARCHAR(255) NOT NULL
+);
+
+-- Tabela Produto:
+CREATE TABLE IF NOT EXISTS produto (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    quantidade INTEGER NOT NULL,
+    preco DECIMAL(10, 2) NOT NULL,
+    categoriaID INTEGER,
+    FOREIGN KEY (categoriaID) REFERENCES categoria(id)
+);
+
+-- Tabela Cliente:
+CREATE TABLE IF NOT EXISTS cliente (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL
+);
+
+-- Tabela Venda:
+CREATE TABLE IF NOT EXISTS venda (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    data DATE NOT NULL,
+    clienteID INTEGER,
+    FOREIGN KEY (clienteID) REFERENCES cliente(id)
+);
+
+-- Tabela Detalhes da Venda:
+CREATE TABLE IF NOT EXISTS detalhes_venda (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    vendaID INTEGER,
+    produtoID INTEGER,
+    quantidade INTEGER NOT NULL,
+    preco DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (vendaID) REFERENCES venda(id),
+    FOREIGN KEY (produtoID) REFERENCES produto(id)
+);
+
+-- Tabela Fornecedor:
+CREATE TABLE IF NOT EXISTS fornecedor (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    contato VARCHAR(255),
+    telefone VARCHAR(20)
+);
+
+-- Tabela Produto Fornecedor:
+CREATE TABLE IF NOT EXISTS produto_fornecedor (
+    produtoID INTEGER,
+    fornecedorID INTEGER,
+    PRIMARY KEY (produtoID, fornecedorID),
+    FOREIGN KEY (produtoID) REFERENCES produto(id),
+    FOREIGN KEY (fornecedorID) REFERENCES fornecedor(id)
+);
+
+# 02 - INSERIR DADOS:
+
+-- Inserindo dados na tabela Categoria:
+INSERT INTO categoria (nome) VALUES 
+('Smartphones'), 
+('Limpeza'), 
+('Congelados'),
+('Perecível'),
+('Não Perecível'),
+('Higiene');
+
+-- Inserindo dados na tabela Fornecedor:
+INSERT INTO fornecedor (nome, contato, telefone) VALUES 
+('Samsung', 'São Paulo', '123456'), 
+('Apple', 'Rio de Janeiro', '111567'), 
+('Motorola', 'Porto Alegre', '223344'), 
+('Omo', 'São Paulo', '987654'), 
+('Ypê', 'Brasília', '890765'), 
+('Downy', 'Belo Horizonte', '654900'),
+('Tambaú', 'Pernambuco', '900909'), 
+('Turquesa', 'Recife', '567440'), 
+('Flocão', 'Aracaju', '654900'), 
+('Danone', 'Piauí', '540909'), 
+('Presidente', 'Recife', '987440'), 
+('Três Corações', 'Ceará', '654900'), 
+('Colgate', 'Bahia', '540909'), 
+('Loreal', 'Acre', '987440'), 
+('Floral', 'Goiás', '654900');
+
+-- Inserindo dados na tabela Cliente:
+INSERT INTO cliente (nome, email) VALUES 
+('Flora Barros', 'flora@gmail.com'),
+('Dani Uchôa', 'dani@gmail.com'),
+('Camilla Barros', 'camilla@gmail.com'),
+('Ávilla Gabriella', 'avilla@gmail.com'),
+('Beatriz Lima', 'beatriz@gmail.com'),
+('Karen Ribeiro', 'karen@gmail.com');
+
+-- Inserindo dados na tabela Produto:
+INSERT INTO produto (nome, quantidade, preco, categoriaID) VALUES
+('iPhone 15', 5, 977.99, 1),
+('Lux', 10, 4.99, 6),
+('Sabão em pó', 10, 10.00, 2),
+('Picanha 10Kg', 20, 40.00, 3),
+('Ovo', 48, 1.00, 4),
+('Sal', 30, 2.00, 5);
+
+-- Inserindo dados na tabela Produto Fornecedor:
+INSERT INTO produto_fornecedor (produtoID, fornecedorID) VALUES
+(2, 15),
+(2, 14),
+(3, 4),
+(3, 5),
+(4, 11),
+(5, 7),
+(6, 8);
+
+-- Inclusão de dados na tabela Venda
+INSERT INTO venda (data, clienteID) VALUES
+('2024-01-10', 1),
+('2024-01-15', 2),
+('2024-01-22', 3),
+('2024-02-01', 4),
+('2024-02-03', 5),
+('2024-02-06', 6);
+
+-- Inclusão de dados na tabela DetalhesVenda
+INSERT INTO detalhes_venda (vendaID, produtoID, quantidade, preco) VALUES
+(1, 1, 5, (5 * 977.99)),
+(2, 2, 4, (4 * 4.99)),
+(3, 3, 10, (10 * 10.00)),
+(4, 4, 2, (2 * 40.00)),
+(5, 5, 11, (11 * 1.00)),
+(6, 6, 6, (6 * 2.00));
+
+# 03 - CONSULTAS:
+
+-- Listar todos os produtos em estoque
+SELECT * FROM produto;
+
+-- Encontrar as vendas realizadas por um cliente específico
+SELECT cliente.nome AS Cliente, venda.data AS Data_Venda, produto.nome AS Produto, detalhes_venda.quantidade AS Quantidade, detalhes_venda.preco AS Preco
+FROM venda
+INNER JOIN cliente ON venda.clienteID = cliente.id
+INNER JOIN detalhes_venda ON venda.id = detalhes_venda.vendaID
+INNER JOIN produto ON detalhes_venda.produtoID = produto.id
+WHERE cliente.nome = 'Flora Barros';
+
+-- Identificar os produtos mais vendidos
+SELECT categoria.nome AS Categoria, SUM(detalhes_venda.quantidade) AS Quantidade_Total
+FROM categoria
+INNER JOIN produto ON categoria.id = produto.categoriaID
+INNER JOIN detalhes_venda ON produto.id = detalhes_venda.produtoID
+GROUP BY categoria.nome
+ORDER BY Quantidade_Total DESC;
+
+-- Calcular o total de vendas por categoria de produto
+SELECT categoria.nome AS Categoria, SUM(detalhes_venda.preco) AS Valor_Total
+FROM categoria
+INNER JOIN produto ON categoria.id = produto.categoriaID
+INNER JOIN detalhes_venda ON produto.id = detalhes_venda.produtoID
+GROUP BY categoria.nome
+ORDER BY Valor_Total DESC;
+
+# 04 - ATUALIZAÇÕES E EXCLUSÕES:
+
+-- Atualizar a quantidade em estoque após uma venda
+UPDATE produto
+SET quantidade = quantidade - 3
+WHERE id = 1;
+
+-- Remover um cliente
+DELETE FROM cliente
+WHERE id = 3;
